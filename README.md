@@ -38,7 +38,7 @@ npm num android
 
 ### Detalhes
 
-  - Em busca de aprimar meus conhecimentos em React Native resolvi criar este projeto.
+  - Em busca de aprimorar meus conhecimentos em React Native, resolvi criar este projeto.
   - Este projeto foi desafiador, pois foi necessário combinar várias técnicas e bibliotecas de forma organizada e escalável.
   
 #### Pacotes Utilizados
