@@ -50,7 +50,7 @@ export default function() {
 
   const posts: PostInfo[] = [];
 
-  for(let i=0; i<10; i++) {
+  for(let i=0; i<3; i++) {
     const images = []
     for (let j=0; j<3; j++) {
       images.push(`${faker.image.nature()}?random=${Math.round(Math.random() * 1000)}`)

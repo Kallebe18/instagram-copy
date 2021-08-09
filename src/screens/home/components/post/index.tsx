@@ -19,27 +19,37 @@ interface PostProps extends ViewProps {
   post: PostInfo
 }
 
-
 function Post({ post }: PostProps) {
   const [liked, setLiked] = useState(false)
 
   const footerHeartScale = useSharedValue(1)
   const contentHeartScale = useSharedValue(0)
+  const contentHeartHeight = useSharedValue(0)
+  const contentHeartWidth = useSharedValue(0)
 
   const contentHeartStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: contentHeartScale.value }]
+    transform: [{ scale: contentHeartScale.value }],
+    height: contentHeartHeight.value,
+    width: contentHeartWidth.value
   }), [])
   const footerHeartStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: footerHeartScale.value }]
+    transform: [{ scale: footerHeartScale.value }],
   }), [])
 
   const handleLike = () => {
     setLiked(true)
+    contentHeartHeight.value = 120
+    contentHeartWidth.value = 120
     contentHeartScale.value = withSpring(0.8, {
       velocity: 5
     }, (isFinished) => {
       if (isFinished) {
-        contentHeartScale.value = withDelay(200, withTiming(0));
+        contentHeartScale.value = withTiming(0, undefined, (f) => {
+          if (f) {
+            contentHeartHeight.value = 0
+            contentHeartWidth.value = 0
+          }
+        });
       }
     });
 

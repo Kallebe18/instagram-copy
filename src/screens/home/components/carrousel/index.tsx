@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import {
   Dimensions,
   FlatList,
@@ -28,7 +28,7 @@ function Carrousel({ images, setCurrentImage }: CarrouselProps ) {
       showsHorizontalScrollIndicator={false}
       renderItem={({ item, index }) => {
         return (
-          <PostContentImage 
+          <PostContentImage
             resizeMode={'cover'} 
             style={{
               width: Dimensions.get('screen').width,

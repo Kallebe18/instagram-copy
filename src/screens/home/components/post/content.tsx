@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, ViewToken } from 'react-native'
+import { Dimensions, View, ViewToken } from 'react-native'
 import { Heart } from 'react-native-feather'
 import { TapGestureHandler } from 'react-native-gesture-handler'
 import Animated from 'react-native-reanimated'
@@ -27,7 +27,6 @@ function PostContent({
     animatedHeartStyle
   }: PostContentProps) {
   const [currentImageIndex, setCurrentImage] = useState(0)
-
   const renderIndicators = () => {
     const indicators = []
     for (let i=0; i<images.length; i++) {
@@ -48,32 +47,34 @@ function PostContent({
   }
 
   return (
-    <View>
-      <TapGestureHandler
-        numberOfTaps={2}
-        onActivated={handleLike}
-      >
+    <TapGestureHandler
+    numberOfTaps={2}
+    onActivated={handleLike}
+  >
+    <View style={{width: '100%'}}>
+
         <PostContentContainer>
           <Carrousel 
             setCurrentImage={handleSetCurrentImage}
             images={images}
           />
           <Animated.View style={[{ 
-              position: 'absolute' 
+              position: 'absolute',
+              elevation: 1,
             }, animatedHeartStyle
           ]}>
             <Heart
               fill='#fff'
-              height={120} 
-              width={120}
+              width={'100%'}
+              height={'100%'}
             />
           </Animated.View>
         </PostContentContainer>
-      </TapGestureHandler>
       <PostContentIndicatorsContainer>
         {renderIndicators()}
       </PostContentIndicatorsContainer>
     </View>
+    </TapGestureHandler>
   )
 }
 
