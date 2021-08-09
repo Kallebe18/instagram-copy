@@ -49,4 +49,3 @@ npm num android
   - faker
   - miragejs
   - axios
-  - jest
